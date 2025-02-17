@@ -14,6 +14,23 @@ A local Retrieval-Augmented Generation (RAG) chatbot built with Streamlit, Llama
 *   **Customizable System Instructions:**  Define system instructions (system prompt) to control the AI's behavior.
 *   **Short term memory:** Remember previous conversations.
 
+## Project Layout
+
+The project has the following structure:
+
+*   `chatbot_gui.py`: This file contains the Streamlit application code.
+*   `chroma_db.py`: This file contains the code for interacting with the Chroma database.
+*   `document_loader.py`: This file contains the code for loading documents from different file types.
+*   `indexing.py`: This file contains the code for creating and querying the index.
+*   `session_manager.py`: This file contains the code for managing chat sessions.
+*   `data/`: This directory contains the documents that are uploaded by the user.
+*   `vector_index.json`: This file contains the persisted index.
+*   `embedding_model/`: This directory contains the embedding models.
+
+## Embedding Folder
+
+The `embedding_model` folder is intended to store the embedding models used by the application. While the folder itself is tracked by Git, the models inside it are not. This is because the models can be large and are not essential for the codebase to function. You can download and place your desired embedding models in this folder.
+
 ## Prerequisites
 
 Before you begin, ensure you have the following:

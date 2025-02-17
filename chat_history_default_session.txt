@@ -1,0 +1,1 @@
+user: good afternoon\nassistant: Please upload documents to create an index first.\n
