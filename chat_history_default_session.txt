@@ -1,1 +1,18 @@
-user: good afternoon\nassistant: Please upload documents to create an index first.\n
+user: good afternoon\nassistant: Please upload documents to create an index first.\n\nassistant: Index loaded from disk.\nuser: how do i make a node?\nassistant: 
+To create a custom node in ComfyUI, follow these steps:
+1. Open your code editor and create a new Python file. Name it something descriptive, such as "my_custom_node.py".
+2. Import the necessary modules by adding the following lines to the top of your file:
+import os
+import json
+from comfyui import Node
+3. Define the class for your custom node. In this example, we'll create a simple node that takes two inputs and returns their sum:
+class MyCustomNode(Node):
+    def __init__(self, inputs, outputs):
+        super().__init__(inputs, outputs)
+4. Override the process method to handle the logic for your node. In this case, we'll add the following code:
+def process(self, data):
+    inputs = self.get_input("input1") + self.get_input("input2")
+    return {"output": int(inputs)}
+5. Save your file and open ComfyUI.
+6. In the "Nodes" tab, click on the "Add Node" button.
+7. Select "Custom Node" from the dropdown menu.\n

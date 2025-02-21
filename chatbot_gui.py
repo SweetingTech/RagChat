@@ -8,8 +8,8 @@ from session_manager import load_chat_history, save_chat_history, clear_chat_his
 # --- Configuration ---
 INDEX_FILEPATH = "vector_index.json"
 DATA_DIR = "data"
-MODEL_PATH = "http://localhost:1234"  # Replace with your model path
-LOCAL_EMBEDDING_MODEL_PATH = "embedding_model\\NV-Embed-v2"
+MODEL_PATH = st.text_input("LM Studio API Endpoint", value="http://localhost:1234", help="Enter the IP address and port where LM Studio is running.")  # Replace with your model path
+LOCAL_EMBEDDING_MODEL_PATH = "embedding_model\\snowflake-arctic-embed-m-v2.0"
 #EMBEDDING_MODEL_NAME = "sentence-transformers/all-mpnet-base-v2"
 
 # Ensure data directory exists

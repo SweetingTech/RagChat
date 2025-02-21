@@ -2,12 +2,12 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A local Retrieval-Augmented Generation (RAG) chatbot built with Streamlit, LlamaIndex, and LlamaCPP (for connecting to LM Studio). This chatbot allows you to upload documents of various types (PDF, DOCX, TXT, XLSX, images, etc.) and ask questions based on their content. It provides session management, local index persistence, and customizable system instructions.
+A local Retrieval-Augmented Generation (RAG) chatbot built with Streamlit and LlamaIndex, leveraging LM Studio's OpenAI-compatible API for local LLM inference. This chatbot allows you to upload documents of various types (PDF, DOCX, TXT, XLSX, images, etc.) and ask questions based on their content. It provides session management, local index persistence, and customizable system instructions.
 
 ## Features
 
 *   **Multi-Document Support:**  Ingest and process PDFs, DOCX, TXT, XLSX, images, and HTML files.
-*   **Local LLM Integration:**  Connect to a local LM Studio instance for inference.
+*   **Local LLM Integration:**  Connect to a local LM Studio instance via its OpenAI-compatible API for inference. The application automatically detects and uses the model loaded in LM Studio.
 *   **Retrieval-Augmented Generation:**  Combines document retrieval with LLM generation for accurate and informative answers.
 *   **Session Management:**  Create and manage multiple chat sessions.
 *   **Local Index Persistence:**  Save and load the LlamaIndex index to avoid re-indexing documents on every run.
@@ -71,8 +71,15 @@ Before you begin, ensure you have the following:
 4.  **Install the required packages:**
 
     ```bash
-    pip install llama-index pypdf pillow python-docx unstructured openpyxl beautifulsoup4 requests streamlit chromadb
+    pip install -r requirements.txt
     ```
+
+5.  **Configure LM Studio:**
+
+    1. Download and install LM Studio from [https://lmstudio.ai/](https://lmstudio.ai/)
+    2. Load your preferred model in LM Studio
+    3. Start the local server in LM Studio (it will run on http://localhost:1234 by default)
+    4. The application will automatically connect to LM Studio's API endpoint
 
 5.  **Install Tesseract OCR (Optional):**
 
@@ -110,9 +117,12 @@ Before you begin, ensure you have the following:
 
 ## Configuration
 
-1.  **LM Studio Model Path:**
+1.  **LM Studio Setup:**
 
-    Update the `MODEL_PATH` variable in the `streamlit_app.py` file to point to the path of your local LLM model in LM Studio (e.g., `"models/mistral-7b-instruct-v0.1.Q4_K_M.gguf"`). Make sure LM Studio is running and serving the model.
+    1. Download and install LM Studio from [https://lmstudio.ai/](https://lmstudio.ai/)
+    2. Load your preferred model in LM Studio
+    3. Start the local server in LM Studio (it will run on http://localhost:1234 by default)
+    4. The application will automatically connect to LM Studio's API endpoint and use the currently loaded model
 
 2.  **Embedding Model:**
 
@@ -126,9 +136,17 @@ Before you begin, ensure you have the following:
 
 1.  **Run the Streamlit application:**
 
-    ```bash
-    streamlit run streamlit_app.py
-    ```
+    *   **On Linux/macOS:**
+
+        ```bash
+        streamlit run chatbot_gui.py
+        ```
+
+    *   **On Windows:**
+
+        ```bash
+        venv\Scripts\streamlit run chatbot_gui.py
+        ```
 
 2.  **Access the application in your browser:**
 
